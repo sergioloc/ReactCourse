@@ -1,21 +1,55 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {Component} from 'react'
+import {View, Text, StyleSheet, Image, Button, Alert} from 'react-native'
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+class ReactCourse extends Component {
+
+  welcome = () => { Alert.alert('Welcome to React Native!') }
+
+  render() {
+    return (
+      <View style={styles.container}>
+
+        <View style={styles.header}>
+          <Image source={require('./assets/react-native-logo.png')} style={styles.logo}/>          
+        </View>
+
+        <View style={[styles.body, styles.bold]}>
+          <Text></Text>
+          <Button title="Welcome" onPress={this.welcome}/>
+        </View>
+
+      </View>
+    )
+  }
+
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: 'column'
   },
-});
+
+  header: {
+    flex: 1,
+    marginTop: 40,
+    alignItems: 'center'
+  },
+
+  body: {
+    flex: 1,
+    alignItems: 'center'
+  },
+
+  bold: {
+    fontWeight: 'bold'
+  },
+
+  logo: {
+    width: 100,
+    height: 100,
+    resizeMode: 'contain'
+  }
+})
+
+export default ReactCourse
