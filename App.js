@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {View, Text, StyleSheet, Image, Button, Alert} from 'react-native'
+import {View, Text, StyleSheet, Image, Button, Alert, ImageBackground, TextInput, ScrollView} from 'react-native'
 
 class ReactCourse extends Component {
 
@@ -7,21 +7,26 @@ class ReactCourse extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <ImageBackground source={require('./assets/background.jpg')} style={styles.container}>
+ 
+          <View style={styles.header}>
+            <Image source={require('./assets/react-native-logo.png')} style={styles.logo}/>
+            <Button title="Welcome" onPress={this.welcome} color="#61DBFB"/>
+                <TextInput placeholder="Username" placeholderTextColor="white" maxLength={8}
+                  style={{borderWidth: 1, borderColor: 'white', padding: 5, marginTop: 10}} />        
+          </View>
 
-        <View style={styles.header}>
-          <Image source={require('./assets/react-native-logo.png')} style={styles.logo}/>          
-        </View>
+          <View style={{flex:1, alignItems: 'center'}}>
+            <ScrollView>
+              <Text> Hello Scroll View </Text>
+              <Text> Hello Scroll View </Text>
+              <Text> Hello Scroll View </Text>
+            </ScrollView>
+          </View>
 
-        <View style={[styles.body, styles.bold]}>
-          <Text></Text>
-          <Button title="Welcome" onPress={this.welcome}/>
-        </View>
-
-      </View>
+      </ImageBackground>
     )
   }
-
 }
 
 const styles = StyleSheet.create({
@@ -32,13 +37,13 @@ const styles = StyleSheet.create({
 
   header: {
     flex: 1,
-    marginTop: 40,
+    marginTop: 30,
     alignItems: 'center'
   },
 
   body: {
-    flex: 1,
-    alignItems: 'center'
+    flex: 0.5,
+    alignItems: 'center',
   },
 
   bold: {
